@@ -33,17 +33,17 @@ def mse(num_samples):
 def rmse(num_samples):
   return math.sqrt(mse(num_samples))
 
-def reg_loss(num_samples, lossName):
-  if lossName == 'MAE':
+def reg_loss(num_samples, loss_name):
+  if loss_name == 'MAE':
     return mae(num_samples)
-  elif lossName == 'MSE':
+  elif loss_name == 'MSE':
     return mse(num_samples)
-  elif lossName == 'RMSE':
+  elif loss_name == 'RMSE':
     return mse(num_samples)
 
 num_samples = input("Input number of samples (integer number) which are generated:")
 if is_int(num_samples):
-  lossName = input("Input loss name (MSE | MAE | RMSE ):")
-  reg_loss(int(num_samples),lossName)
+  loss_name = input("Input loss name (MSE | MAE | RMSE ):")
+  reg_loss(int(num_samples),loss_name)
 else:
   print('number of samples must be an integer number')
