@@ -32,7 +32,7 @@ def activation_function(x, act_fun):
     print(f"ELU: f({x}) = {elu(x)}")
   else:
     print(f"{act_fun} is not supported")
-  return
+
 
 def exercise2():
   x = input("Input x:")
@@ -41,6 +41,6 @@ def exercise2():
     activation_function(float(x),act_fun)
   else:
     print('x must be a number')
-  return
+
 
 exercise2()

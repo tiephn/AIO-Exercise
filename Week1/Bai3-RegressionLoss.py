@@ -8,42 +8,42 @@ def is_int(n):
     return False
   return True
 
-def mae(numSamples):
+def mae(num_samples):
   result = 0
-  for i in range(0,numSamples):
+  for i in range(0,num_samples):
     predict = random.uniform(0,10)
     target = random.uniform(0,10)
     result = result + abs(target - predict)
     print(f"loss name: MAE, sample {i}, pred: {predict}, target: {target}, loss: {result}")
-  result = result/numSamples
+  result = result/num_samples
   print(f"final MAE: {result}")
-  return
 
-def mse(numSamples):
+
+def mse(num_samples):
   result = 0
-  for i in range(0,numSamples):
+  for i in range(0,num_samples):
     predict = random.uniform(0,10)
     target = random.uniform(0,10)
     result = result + abs(target - predict)**2
     print(f"loss name: MSE, sample {i}, pred: {predict}, target: {target}, loss: {result}")
-  result = result/numSamples
+  result = result/num_samples
   print(f"final MSE: {result}")
-  return
 
-def rmse(numSamples):
-  return math.sqrt(mse(numSamples))
 
-def reg_loss(numSamples, lossName):
+def rmse(num_samples):
+  return math.sqrt(mse(num_samples))
+
+def reg_loss(num_samples, lossName):
   if lossName == 'MAE':
-    return mae(numSamples)
+    return mae(num_samples)
   elif lossName == 'MSE':
-    return mse(numSamples)
+    return mse(num_samples)
   elif lossName == 'RMSE':
-    return mse(numSamples)
+    return mse(num_samples)
 
-numSamples = input("Input number of samples (integer number) which are generated:")
-if is_int(numSamples):
+num_samples = input("Input number of samples (integer number) which are generated:")
+if is_int(num_samples):
   lossName = input("Input loss name (MSE | MAE | RMSE ):")
-  reg_loss(int(numSamples),lossName)
+  reg_loss(int(num_samples),lossName)
 else:
   print('number of samples must be an integer number')
