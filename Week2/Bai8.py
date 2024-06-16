@@ -3,11 +3,11 @@
 
 def my_function (n) :
 # Your code here
-  min = n[0]
+  minn = n[0]
   for i in range(1,len(n)):
-    if min > n[i]:
-      min = n[i]
-  return min
+    if minn > n[i]:
+      minn = n[i]
+  return minn
 
 my_list = [1, 22, 93, -100]
 assert my_function (my_list) == -100
