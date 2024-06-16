@@ -3,11 +3,11 @@
 
 def my_function(n):
 # Your code here
-  max = n[0]
+  maxn = n[0]
   for i in range(1,len(n)):
-    if max < n[i]:
-      max = n[i]
-  return max
+    if maxn < n[i]:
+      maxn = n[i]
+  return maxn
 
 my_list = [1001, 9, 100, 0]
 assert my_function(my_list) == 1001
