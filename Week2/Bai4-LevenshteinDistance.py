@@ -1,9 +1,9 @@
-def levenshtein_distance(token1, token2):
+﻿def levenshtein_distance(token1, token2):
     # Your Code Here
   distance = 0
   m = len(token1)
   n = len(token2)
-  ld = [[0]*(n+1) for i in range(m+1)]
+  ld = [[0]*(n+1) for _ in range(m+1)]
   for i in range(m+1):
     ld[i][0] = i
   for i in range(n+1):
@@ -18,4 +18,4 @@ def levenshtein_distance(token1, token2):
   return distance
 
 assert levenshtein_distance("hi","hello") == 4.0
-print(levenshtein_distance ("hola", "hello"))
+print(levenshtein_distance ("con đường", "cân đường"))

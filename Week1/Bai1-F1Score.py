@@ -14,9 +14,9 @@ def exercise1(tp=0, fp=0, fn=0):
 
   precision = tp/(tp+fp)
   recall = tp/(tp+fn)
-  f1Score = 2*(precision*recall)/(precision+recall)
-  print(f"Precision is {precision}\nRecall is {recall}\nF1-Score is {f1Score}")
-  return
+  f1_score = 2*(precision*recall)/(precision+recall)
+  print(f"Precision is {precision}\nRecall is {recall}\nF1-Score is {f1_score}")
+
 
 #chạy test kết quả:
 exercise1(2,3,4)
