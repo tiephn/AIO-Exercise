@@ -1,19 +1,27 @@
 ﻿
-#Bài 7: Hãy hoàn thành chương trình dưới đây. Đầu ra của chương trình là gì?
+# Bài 7: Hãy hoàn thành chương trình dưới đây. Đầu ra của chương trình là gì?
 def my_function(x, y):
-# Your code here
-#Su dung extend de noi y vao x
-  x.extend(y)
-  return x
+    # Your code here
+    # Su dung extend de noi y vao x
+    x.extend(y)
+    return x
 
-list_num1 = ['a', 2 , 5]
-list_num2 = [1 , 1]
-list_num3 = [0 , 0]
 
-assert my_function(list_num1, my_function(list_num2, list_num3)) == ['a', 2, 5, 1, 1,0,0]
+list_num1 = ['a', 2, 5]
+list_num2 = [1, 1]
+list_num3 = [0, 0]
 
-list_num1 = [1 , 2]
-list_num2 = [3 , 4]
-list_num3 = [0 , 0]
+assert my_function(list_num1, my_function(list_num2, list_num3)) == [
+    'a', 2, 5, 1, 1, 0, 0]
+
+list_num1 = [1, 2]
+list_num2 = [3, 4]
+list_num3 = [0, 0]
 
 print(my_function(list_num1, my_function(list_num2, list_num3)))
+
+def comSum(a,b):
+    return a+b
+
+
+    
