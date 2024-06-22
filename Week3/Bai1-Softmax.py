@@ -11,6 +11,7 @@ ghi đè vào phương thức forward() theo công thức sau đây
 import torch
 import torch.nn as nn
 
+
 class Softmax(nn.Module):
     def __init__(self):
         super().__init__()
@@ -37,7 +38,54 @@ softmax = Softmax()
 output = softmax(data)
 print(output)
 
-data2 = torch.Tensor([1, 2, 3])
+data = torch.Tensor([1, 2, 3])
 softmax_stable = SoftmaxStable()
-output2 = softmax_stable(data2)
+output = softmax_stable(data)
+print(output)
+
+
+#Câu 1:
+print('Kết quả câu 1:')
+data = torch.Tensor([1, 2, 3])
+softmax_function = nn.Softmax(dim =0)
+output = softmax_function (data)
+assert round(output[0].item(), 2) == 0.09
+print(output)
+
+# câu hỏi 2
+
+print('Kết quả câu 2:')
+data = torch.Tensor([5, 2, 4])
+my_softmax = Softmax()
+output2 = my_softmax(data)
+assert round(output2[-1].item(), 2) == 0.26
 print(output2)
+
+# câu hỏi 3
+print('Kết quả câu 3:')
+data = torch.Tensor([1, 2, 300000000])
+my_softmax = Softmax()
+output3 = my_softmax(data)
+assert round(output3[0].item(), 2) == 0.0
+print(output3)
+
+# câu 4
+print('Kết quả câu 4:')
+
+
+class SoftmaxStable2(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, x):
+        x_max = torch.max(x, dim=0, keepdims=True)
+        x_exp = torch.exp(x-x_max.values)
+        partition = x_exp.sum(0, keepdims=True)
+        return x_exp/partition
+
+
+data4 = torch.Tensor([1, 2, 3])
+softmax_stable4 = SoftmaxStable2()
+output4 = softmax_stable4(data4)
+assert round(output4[-1].item(), 2) == 0.67
+print(output4)
