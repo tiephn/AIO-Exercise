@@ -19,111 +19,126 @@
  (hint: Có thể sử dụng sort của list hoặc viết thêm function đều được)
  (e) Viết compute_average() method để tính trung bình năm sinh của các teachers trong ward """
 
+
 class Person():
     def __init__(self, name, yob):
         self._name = name
         self._yob = yob
 
+
 class Student(Person):
     def __init__(self, name, yob, grade):
-        self._name = name
-        self._yob = yob
+        super().__init__(name, yob)
         self._grade = grade
-    
+
     def describe(self):
-        print(f"Student - Name: {self._name} - YoB: {self._yob} - Grade: {self._grade}")
+        return f"Student - Name: {self._name} - YoB: {self._yob} - Grade: {self._grade}"
+
 
 class Teacher(Person):
     def __init__(self, name, yob, subject):
-        self._name = name
-        self._yob = yob
+        super().__init__(name, yob)
         self._subject = subject
-    
+
     def describe(self):
-        print(f"Teacher - Name: {self._name} - YoB: {self._yob} - Subject: {self._subject}")
+        return f"Teacher - Name: {self._name} - YoB: {self._yob} - Subject: {self._subject}"
+
 
 class Doctor(Person):
     def __init__(self, name, yob, specialist):
-        self._name = name
-        self._yob = yob
+        super().__init__(name, yob)
         self._specialist = specialist
-    
+
     def describe(self):
-        print(f"Doctor - Name: {self._name} - YoB: {self._yob} - Specialist: {self._specialist}")
-
-student1 = Student(name="studentA", yob =2010, grade ="7")
-student1.describe()
-
-teacher1 = Teacher ( name ="teacherA", yob =1969, subject ="Math")
-teacher1.describe ()
-
-doctor1 = Doctor ( name ="doctorA", yob =1945, specialist ="Endocrinologists")
-doctor1.describe ()
+        return f"Doctor - Name: {self._name} - YoB: {self._yob} - Specialist: {self._specialist}"
 
 
-"""
-# Examples
-2 # 2(a)
-3 student1 = Student ( name =" studentA ", yob =2010 , grade ="7")
-4 student1 . describe ()
-5 # output
-6 >> Student - Name : studentA - YoB: 2010 - Grade : 7
-7 8
+class Ward():
+    def __init__(self, name):
+        self._name = name
+        self._people = []
+
+    def add_person(self, person):
+        self._people.append(person)
+
+    def describe(self):
+        _st = f"Ward: {self._name}"
+        for p in self._people:
+            _st += "\n" + p.describe()
+        return _st
+
+    # Viết count_doctor() method để đếm số lượng doctor trong ward.
+    def count_doctor(self):
+        return sum(isinstance(p, Doctor) for p in self._people)
+
+    # Viết compute_average() method để tính trung bình năm sinh của các teachers trong ward
+    def compute_average(self):
+        _teachers = [p for p in self._people if isinstance(p, Teacher)]
+        return sum(t._yob for t in _teachers)/len(_teachers)
+
+    # Viết sort_age() method để sort mọi người trong ward theo tuổi của họ với thứ tự tăng dần.
+    def sort_age(self):
+        self._people.sort(key=lambda p: p._yob)
+
+
+student1 = Student(name="studentA", yob=2010, grade="7")
+print(student1.describe())
+
+teacher1 = Teacher(name="teacherA", yob=1969, subject="Math")
+print(teacher1.describe())
+
+doctor1 = Doctor(name="doctorA", yob=1945, specialist="Endocrinologists")
+print(doctor1.describe())
+
+teacher2 = Teacher(name="teacherB", yob=1995, subject="History")
+doctor2 = Doctor(name="doctorB", yob=1975, specialist="Cardiologists")
+
+ward1 = Ward(name="Ward1")
+ward1.add_person(student1)
+ward1.add_person(teacher1)
+ward1.add_person(teacher2)
+ward1.add_person(doctor1)
+ward1.add_person(doctor2)
+print(ward1.describe())
+
+print(f"Number of doctors: {ward1.count_doctor()}")
+
+print("After sorting Age of Ward1 people")
+ward1.sort_age()
+print(ward1.describe())
+
+print(f"Average year of birth (teachers): {ward1.compute_average()}")
+
+# Câu 5:
+print('Kết quả câu 5:')
+student1 = Student(name="studentZ2023", yob=2011, grade="6")
+assert student1._yob == 2011
+print(student1.describe())
+
+# Câu 6
+print('Kết quả câu 6:')
+teacher1 = Teacher(name="teacherZ2023", yob=1991, subject="History")
+assert teacher1._yob == 1991
+print(teacher1.describe())
+
+# Câu 7
+print('Kết quả câu 7:')
+doctor1 = Doctor(name="doctorZ2023", yob=1981, specialist="Endocrinologists")
+assert doctor1._yob == 1981
+print(doctor1.describe())
+
+#câu 8
+print('Kết quả câu 8:')
+ward2 = Ward(name ="Ward1")
+student1 = Student ( name =" studentA ", yob =2010 , grade ="7")
 teacher1 = Teacher ( name =" teacherA ", yob =1969 , subject =" Math ")
-9 teacher1 . describe ()
-10 # output
-11 >> Teacher - Name : teacherA - YoB: 1969 - Subject : Math
-12
-13 doctor1 = Doctor ( name =" doctorA ", yob =1945 , specialist =" Endocrinologists ")
-14 doctor1 . describe ()
-15 # output
-16 >> Doctor - Name : doctorA - YoB: 1945 - Specialist : Endocrinologists
-17
-18
-19 # 2(b)
-20 print ()
-21 teacher2 = Teacher ( name =" teacherB ", yob =1995 , subject =" History ")
-22 doctor2 = Doctor ( name =" doctorB ", yob =1975 , specialist =" Cardiologists ")
-23 ward1 = Ward ( name =" Ward1 ")
-24 ward1.add_person (student1)
-25 ward1.add_person (teacher1)
-26 ward1.add_person (teacher2)
-27 ward1.add_person (doctor1)
-28 ward1.add_person (doctor2)
-29 ward1.describe ()
-30
-31 # output
-32 >> Ward Name : Ward1
-33 Student - Name : studentA - YoB: 2010 - Grade : 7
-34 Teacher - Name : teacherA - YoB: 1969 - Subject : Math
-35 Teacher - Name : teacherB - YoB: 1995 - Subject : History
-36 Doctor - Name : doctorA - YoB : 1945 - Specialist : Endocrinologists
-37 Doctor - Name : doctorB - YoB : 1975 - Specialist : Cardiologists
-38
-39 # 2(c)
-print (f"\ nNumber of doctors : { ward1 . count_doctor ()}")
-41
-42 # output
-43 >> Number of doctors : 2
-44
-45 # 2(d)
-46 print ("\ nAfter sorting Age of Ward1 people ")
-47 ward1 . sort_age ()
-48 ward1 . describe ()
-49
-50 # output
-51 >> After sorting Age of Ward1 people
-52 Ward Name : Ward1
-53 Student - Name : studentA - YoB: 2010 - Grade : 7
-54 Teacher - Name : teacherB - YoB: 1995 - Subject : History
-55 Doctor - Name : doctorB - YoB : 1975 - Specialist : Cardiologists
-56 Teacher - Name : teacherA - YoB: 1969 - Subject : Math
-57 Doctor - Name : doctorA - YoB : 1945 - Specialist : Endocrinologists
-58
-59 # 2(e)
-60 print (f"\ nAverage year of birth ( teachers ): { ward1 . compute_average ()}")
-61
-62 # output
-63 >> Average year of birth ( teachers ): 1982.0
-
-"""
+teacher2 = Teacher ( name =" teacherB ", yob =1995 , subject =" History ")
+doctor1 = Doctor ( name =" doctorA ", yob =1945 , specialist =" Endocrinologists ")
+#assert ward2.count_doctor() == 1
+doctor2 = Doctor ( name =" doctorB ", yob =1975 , specialist =" Cardiologists ")
+ward2 . add_person ( student1 )
+ward2 . add_person ( teacher1 )
+ward2 . add_person ( teacher2 )
+ward2 . add_person ( doctor1 )
+ward2 . add_person ( doctor2 )
+print(f"Number of doctors: {ward2.count_doctor()}")
