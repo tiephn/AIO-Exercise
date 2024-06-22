@@ -51,14 +51,16 @@ class Doctor(Person):
     def describe(self):
         print(f"Doctor - Name: {self._name} - YoB: {self._yob} - Specialist: {self._specialist}")
 
-student1 = Student(name="studentA", yob =2010 , grade ="7")
+student1 = Student(name="studentA", yob =2010, grade ="7")
 student1.describe()
 
-teacher1 = Teacher ( name =" teacherA ", yob =1969 , subject =" Math ")
-teacher1 . describe ()
+teacher1 = Teacher ( name ="teacherA", yob =1969, subject ="Math")
+teacher1.describe ()
 
-doctor1 = Doctor ( name =" doctorA ", yob =1945 , specialist =" Endocrinologists ")
-doctor1 . describe ()
+doctor1 = Doctor ( name ="doctorA", yob =1945, specialist ="Endocrinologists")
+doctor1.describe ()
+
+
 """
 # Examples
 2 # 2(a)
