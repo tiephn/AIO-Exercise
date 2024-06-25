@@ -134,7 +134,7 @@ student1 = Student ( name =" studentA ", yob =2010 , grade ="7")
 teacher1 = Teacher ( name =" teacherA ", yob =1969 , subject =" Math ")
 teacher2 = Teacher ( name =" teacherB ", yob =1995 , subject =" History ")
 doctor1 = Doctor ( name =" doctorA ", yob =1945 , specialist =" Endocrinologists ")
-#assert ward2.count_doctor() == 1
+
 doctor2 = Doctor ( name =" doctorB ", yob =1975 , specialist =" Cardiologists ")
 ward2 . add_person ( student1 )
 ward2 . add_person ( teacher1 )
