@@ -36,6 +36,15 @@ col1.write("Nội dung cột 1")
 col1.divider()
 col2.write("Nội dung cột 2")
 
+
+#options = st. multiselect (" Your favorite colors a:")
+#st. write ("You selected :", options )
+options = st. multiselect (" Your favorite colors b:", ["Green", "Yellow", "Red", "Blue"], ["Yellow", "Red"])
+options = st. multiselect (" Your favorite colors c:", ["Green", "Yellow", "Red", "Blue"], ["Yellow", "Red"])
+st. write ("You selected :", options )
+options = st. selectbox (" Your favorite colors d:", ["Green", "Yellow", "Red", "Blue"], ["Yellow", "Red"])
+st. write ("You selected :", options )
+
 st.divider()
 
 with st.form('Nhập thông tin ngon vào nhé cưng'):

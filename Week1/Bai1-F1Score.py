@@ -1,5 +1,8 @@
 ﻿import math
 
+import torch
+print(torch.cuda.is_available())
+
 def exercise1(tp=0, fp=0, fn=0):
 
   if not isinstance(tp, int):
