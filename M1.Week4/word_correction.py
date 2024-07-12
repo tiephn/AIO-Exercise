@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 def levenshtein_distance(token1, token2):
@@ -18,11 +19,13 @@ def levenshtein_distance(token1, token2):
     # End Code Here
     return distance
 
+
 def load_vocab(file_path):
     with open(file_path, 'r') as f:
         lines = f.readlines()
     words = sorted(set([line.strip().lower() for line in lines]))
     return words
+
 
 vocabs = load_vocab(file_path='./data/vocab.txt')
 
@@ -34,7 +37,8 @@ if st.button("Compute"):
     for vocab in vocabs:
         distance = levenshtein_distance(word, vocab)
         distances[vocab] = distance
-    sorted_distances = dict(sorted(distances.items(), key=lambda item: item[1]))
+    sorted_distances = dict(
+        sorted(distances.items(), key=lambda item: item[1]))
     correct_word = list(sorted_distances.keys())[0]
     st.write('Corect word: ', correct_word)
 
@@ -43,4 +47,3 @@ if st.button("Compute"):
         st.write('Vocabulary: ', vocabs)
     with col2:
         st.write('Distance: ', sorted_distances)
-
